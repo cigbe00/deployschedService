@@ -37,19 +37,3 @@
   notify:
     - Start schedServerStatus
   tags: deployService
-
-- name: Stop schedServerStatus
-  notify:
-    - Stop schedServerStatus
-  tags: stopService
-
-- name: Start schedServerStatus
-  notify:
-    - Start schedServerStatus
-  tags: startService
-
-- name: Restart schedServerStatus
-  notify:
-    - Restart schedServerStatus
-  tags: reStartService
-    

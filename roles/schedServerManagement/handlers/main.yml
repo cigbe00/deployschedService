@@ -1,0 +1,20 @@
+---
+# handlers file for schedServerManagement
+
+- name: Start schedServerStatus
+  systemd:
+    name: schedServerStatus
+    state: started
+    enabled: yes
+
+- name: Stop schedServerStatus
+  service:
+    name: schedServerStatus
+    state: stopped
+    enabled: no
+
+- name: Restart schedServerStatus
+  service:
+    name: schedServerStatus
+    state: started
+    enabled: yes
