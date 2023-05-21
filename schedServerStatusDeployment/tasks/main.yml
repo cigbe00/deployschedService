@@ -1,0 +1,55 @@
+---
+# tasks file for schedServerStatusDeployment
+
+- name: create builders group
+  group:
+    name: builders
+    state: present
+  tags: deployService
+
+- name: create automation user
+  user:
+    name: automation_user
+    groups: builders
+    shell: /sbin/nologin
+    append: yes
+    state: present
+    create_home: no
+  tags: deployService
+
+- name: Copy systemd service file to server
+  copy:
+    src: schedServerStatus.service
+    dest: /etc/systemd/system
+    owner: root
+    group: root
+  notify:
+    - Start schedServerStatus
+  tags: deployService
+
+- name: Copy binary to server
+  copy:
+    src: schedServerStatus
+    dest: /usr/local/bin
+    mode: 0755
+    owner: root
+    group: root
+  notify:
+    - Start schedServerStatus
+  tags: deployService
+
+- name: Stop schedServerStatus
+  notify:
+    - Stop schedServerStatus
+  tags: stopService
+
+- name: Start schedServerStatus
+  notify:
+    - Start schedServerStatus
+  tags: startService
+
+- name: Restart schedServerStatus
+  notify:
+    - Restart schedServerStatus
+  tags: reStartService
+    

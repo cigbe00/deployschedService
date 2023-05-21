@@ -1,0 +1,13 @@
+[Unit]
+Description=Sched Service Status Checker Routine
+
+[Service]
+User=automation_user
+Group=builders
+ExecStart=/usr/local/bin/schedServerStatus
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=<schedServerStatus> 
+
+[Install]
+WantedBy=multi-user.target

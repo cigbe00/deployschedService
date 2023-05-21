@@ -1,0 +1,6 @@
+[shedStatusServers]
+sched1.vm 
+sched2.vm 
+sched3.vm 
+apphost1 
+apphost2
