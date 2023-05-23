@@ -3,7 +3,7 @@ FROM golang:1.17-alpine as go-deploy-env
  
 # Set environment variable
 ENV APP_NAME schedServerApp
-ENV CMD_PATH main.go
+ENV CMD_PATH hello.go
  
 # Copy all data into image
 COPY . $GOPATH/src/$APP_NAME
