@@ -8,6 +8,8 @@ ExecStart=/usr/local/bin/schedServerStatus
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=<schedServerStatus> 
+Restart=on-failure
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
